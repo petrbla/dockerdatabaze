@@ -1,0 +1,36 @@
+services:
+  # Databáze MariaDB 11.4 LTS
+  globalni_db:
+    image: mariadb:11.4
+    container_name: globalni_db
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      # Na VPS použijeme tvůj připojený disk /data
+      # Na PC můžeš nechat jen ./mysql_data:/var/lib/mysql
+      - ./mysql_data:/var/lib/mysql
+    networks:
+      - globalni_sit
+    # Port 3306 na VPS raději nepouštěj ven, nebo ho v administraci VPS zavři firewallem
+    ports:
+      - "3306:3306"
+
+  # Grafické rozhraní pro správu databáze
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: globalni_pma
+    restart: always
+    depends_on:
+      - globalni_db
+    environment:
+      PMA_HOST: globalni_db
+      PMA_ARBITRARY: 1
+    ports:
+      - "8081:80" 
+    networks:
+      - globalni_sit
+
+networks:
+  globalni_sit:
+    external: true
