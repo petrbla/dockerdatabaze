@@ -1,0 +1,29 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "terminal.integrated.env.windows": {
+            "PATH": "C:\\laragon\\bin\\php\\php-8.4.12-nts-Win32-vs17-x64;C:\\laragon\\bin\\composer;${env:PATH}"
+        },
+        "workbench.colorCustomizations": {
+            "statusBar.background": "#994210",
+            "statusBar.foreground": "#ffffff"
+        },
+        "[php]": {
+            "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+        },
+        "window.title": "sklad.donapo.cz",
+        "intelephense.environment.phpVersion": "8.4.0",
+        "phpSwitcher.selectedApps": [],
+        "phpSwitcher.detectedApps": [
+            {
+                "type": "path",
+                "name": "System PATH",
+                "basePath": "C:\\laragon\\bin\\php"
+            }
+        ]
+    }
+}
